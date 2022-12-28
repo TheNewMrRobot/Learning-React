@@ -1,7 +1,22 @@
 import "./App.css";
+import { UserProvider, useUser } from "./UserContext";
 
 function App() {
-  return <div className="App"></div>;
+  const { user } = useUser();
+  return (
+    <div className="App">
+      <h1>Hello {user.name}</h1>
+    </div>
+  );
 }
 
-export default App;
+function Root() {
+  console.log("Root COmponent");
+  return (
+    <UserProvider>
+      <App />
+    </UserProvider>
+  );
+}
+
+export default Root;
